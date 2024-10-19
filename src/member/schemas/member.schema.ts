@@ -1,22 +1,30 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { BorrowedBook } from './borrowedBook.schema';
+import { ApiProperty } from '@nestjs/swagger';
 
 @Schema()
 export class Member extends Document {
+  @ApiProperty({ description: 'The code of the book', example: 'M001' })
   @Prop()
   code: string;
 
+  @ApiProperty({
+    description: 'The name of the book',
+    example: 'Angga',
+  })
   @Prop()
   name: string;
 
-  @Prop({ type: [BorrowedBook], default: [] })
+  @ApiProperty({ type: [BorrowedBook], default: [] })
+  @Prop()
   borrowed_books: BorrowedBook[];
 
-  @Prop({
+  @ApiProperty({
     type: Date,
     default: null,
   })
+  @Prop()
   penalty_end_date: Date;
 }
 

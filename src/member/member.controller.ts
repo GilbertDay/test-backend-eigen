@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBody, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { MemberService } from './member.service';
 import { Member } from './schemas/member.schema';
 import { BookService } from 'src/book/book.service';
@@ -28,6 +28,21 @@ export class MemberController {
   }
 
   @ApiTags('Members Borrowed Books')
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        memberCode: {
+          type: 'string',
+          example: 'M001',
+        },
+        bookCode: {
+          type: 'string',
+          example: 'TW-11',
+        },
+      },
+    },
+  })
   @Post('/borrow-book')
   async borrowBook(
     @Body('memberCode') memberCode: string,
@@ -37,6 +52,21 @@ export class MemberController {
   }
 
   @ApiTags('Members Returns Books')
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        memberCode: {
+          type: 'string',
+          example: 'M001',
+        },
+        bookCode: {
+          type: 'string',
+          example: 'TW-11',
+        },
+      },
+    },
+  })
   @Post('/return-book')
   async returnBook(
     @Body('memberCode') memberCode: string,
