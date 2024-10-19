@@ -11,7 +11,7 @@ export class MemberController {
     private bookService: BookService,
   ) {}
 
-  @ApiTags('View Members')
+  @ApiTags('View Members & Borrowed Books')
   @Get()
   @ApiOkResponse({
     status: 200,
@@ -27,7 +27,7 @@ export class MemberController {
     return await this.memberService.createMember(member);
   }
 
-  @ApiTags('Members')
+  @ApiTags('Members Borrowed Books')
   @Post('/borrow-book')
   async borrowBook(
     @Body('memberCode') memberCode: string,
@@ -36,7 +36,7 @@ export class MemberController {
     return this.memberService.borrowBook(memberCode, bookCode);
   }
 
-  @ApiTags('Members')
+  @ApiTags('Members Returns Books')
   @Post('/return-book')
   async returnBook(
     @Body('memberCode') memberCode: string,

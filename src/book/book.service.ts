@@ -9,7 +9,9 @@ export class BookService {
   ) {}
 
   async findAll(): Promise<Book[]> {
-    return this.bookModel.find().exec();
+    const books = await this.bookModel.find().exec();
+    const availableBooks = books.filter((book) => book.stock > 0);
+    return availableBooks;
   }
 
   async createBook(book: Book): Promise<Book> {
