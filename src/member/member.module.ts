@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
-import { MemberController } from './member.controller';
+
 import { MongooseModule } from '@nestjs/mongoose';
 import { MemberSchema } from './schemas/member.schema';
-import { MemberService } from './member.service';
-import { BookService } from 'src/book/book.service';
+import { MemberService } from './service/member.service';
+import { BookService } from 'src/book/service/book.service';
 import { BookModule } from 'src/book/book.module';
+import { MemberController } from './controller/member.controller';
 
 @Module({
   imports: [

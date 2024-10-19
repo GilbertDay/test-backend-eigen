@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { BookService } from './book.service';
-import { Book } from './schemas/book.schema';
-import { ApiBody, ApiTags } from '@nestjs/swagger';
+import { BookService } from '../service/book.service';
+import { Book } from '../schemas/book.schema';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('/api/book')
 export class BookController {

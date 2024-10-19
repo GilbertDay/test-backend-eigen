@@ -1,25 +1,26 @@
 import { InjectModel } from '@nestjs/mongoose';
-import { Book } from './schemas/book.schema';
+import { Book } from '../schemas/book.schema';
 import mongoose from 'mongoose';
+import { IBookRepository } from '../repositories/book.repository';
 
 export class BookService {
   constructor(
     @InjectModel(Book.name)
-    private bookModel: mongoose.Model<Book>,
+    private readonly bookRepository: IBookRepository,
   ) {}
 
   async findAvailBooks(): Promise<Book[]> {
-    const books = await this.bookModel.find().exec();
+    const books = await this.bookRepository.findAvailBooks();
     const availableBooks = books.filter((book) => book.stock > 0);
     return availableBooks;
   }
 
   async findAll(): Promise<Book[]> {
-    return this.bookModel.find().exec();
+    return this.bookRepository.findAll();
   }
 
   async createBook(book: Book): Promise<Book> {
-    const res = await this.bookModel.create(book);
+    const res = await this.bookRepository.createBook(book);
     return res;
   }
 }

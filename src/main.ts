@@ -7,7 +7,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('NestJS Backend')
-    .setDescription('The NestJS API description')
+    .setDescription('Technical Test Backend PT Eigen')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);

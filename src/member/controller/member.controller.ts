@@ -2,7 +2,7 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ApiBody, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { MemberService } from './member.service';
 import { Member } from './schemas/member.schema';
-import { BookService } from 'src/book/book.service';
+import { BookService } from 'src/book/service/book.service';
 
 @Controller('/api/member')
 export class MemberController {
