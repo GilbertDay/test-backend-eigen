@@ -1,15 +1,11 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ApiBody, ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { MemberService } from './member.service';
-import { Member } from './schemas/member.schema';
-import { BookService } from 'src/book/service/book.service';
+import { Member } from '../schemas/member.schema';
+import { MemberService } from '../service/member.service';
 
 @Controller('/api/member')
 export class MemberController {
-  constructor(
-    private memberService: MemberService,
-    private bookService: BookService,
-  ) {}
+  constructor(private memberService: MemberService) {}
 
   @ApiTags('View Members & Borrowed Books')
   @Get()

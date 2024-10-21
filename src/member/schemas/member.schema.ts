@@ -25,7 +25,7 @@ export class Member extends Document {
     default: null,
   })
   @Prop()
-  penalty_end_date: Date;
+  penalty_end_date: Date | null;
 }
 
 export const MemberSchema = SchemaFactory.createForClass(Member);

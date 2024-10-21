@@ -2,8 +2,8 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Member } from '../schemas/member.schema';
 import mongoose from 'mongoose';
-import { Book } from 'src/book/schemas/book.schema';
 import { BorrowedBook } from '../schemas/borrowedBook.schema';
+import { Book } from '../../book/schemas/book.schema';
 
 @Injectable()
 export class MemberService {
